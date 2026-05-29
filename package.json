@@ -1,0 +1,22 @@
+{
+  "name": "visual_crosshair_v",
+  "version": "1.0.0",
+  "description": "visual_crosshair_v",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "keywords": [],
+  "author": "Vovursik",
+  "license": "ISC",
+  "dependencies": {
+    "keyspy": "1.1.1"
+  },
+  "devDependencies": {
+    "electron": "42.2.0",
+    "electron-builder": "26.8.1",
+    "electron-rebuild": "3.2.9"
+  }
+}
