@@ -1,56 +1,41 @@
-import { app, BrowserWindow } from 'electron';
-import { GlobalKeyboardListener } from 'keyspy';
+const { listen } = window.__TAURI__.event;
+import WindowCrosshair from "./window_crosshair.js";
 
-import WindowCrosshair from './window_crosshair.js';
-
-class App {
-    constructor(crosshairSize, crosshairPage) {
-        this.crosshairSize = crosshairSize;
-        this.crosshairPage = crosshairPage;
+export default class App {
+    constructor() {
         this.crosshairWindow = null;
-        this.listener = null;
+        this.unlistenMouse = null;
+        this.unlistenCrosshair = null;
     }
 
     async init() {
-        await app.whenReady();
-        
-        this.createWindow();
-        this.setupEventListeners();
-        this.setupKeyspy();
+        this.crosshairWindow = new WindowCrosshair();
+
+        await this.setupMouseListener();
+        await this.setupCrosshairListener();
     }
 
-    createWindow = () => this.crosshairWindow = new WindowCrosshair(this.crosshairSize, this.crosshairSize, this.crosshairPage);
+    async setupMouseListener() {
+        console.log("registering mouse listener");
 
-    setupEventListeners() {
-        app.on('window-all-closed', () => {
-            this.cleanup();
-            if (process.platform !== 'darwin') app.quit();
+        this.unlistenMouse = await listen("mouse-state", (event) => {
+            this.crosshairWindow.setMouseState(Boolean(event.payload));
         });
+
+        console.log("mouse listener registered");
     }
 
-    setupKeyspy() {
-        console.log('Keyspy started');
+    async setupCrosshairListener() {
+        console.log("registering crosshair listener");
 
-        this.listener = new GlobalKeyboardListener();
+        this.unlistenCrosshair = await listen("set-crosshair", (event) => {
+            console.log("set-crosshair:", event.payload);
 
-        this.listener.addListener((event, input) => {
-            if (event.name === 'MOUSE RIGHT') {
-                this.sendToPage('mouse-state', input['MOUSE RIGHT']);
-            }
+            const { html, css } = event.payload;
+
+            this.crosshairWindow.setCrosshair(html, css);
         });
-    }
 
-    sendToPage(channel, data) {
-        if (this.crosshairWindow.window) {
-            this.crosshairWindow.window.webContents.send(channel, data);
-        }
-    }
-
-    cleanup() {
-        if (this.listener) {
-            this.listener = null;
-        }
+        console.log("crosshair listener registered");
     }
 }
-
-export default App;

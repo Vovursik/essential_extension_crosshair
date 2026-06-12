@@ -1,22 +1,16 @@
 {
-  "name": "visual_crosshair_v",
-  "version": "1.0.0",
-  "description": "visual_crosshair_v",
-  "main": "main.js",
+  "name": "visual-crosshair",
+  "private": true,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "start": "electron .",
-    "dist": "electron-builder --win portable"
-  },
-  "keywords": [],
-  "author": "Vovursik",
-  "license": "ISC",
-  "dependencies": {
-    "keyspy": "1.1.1"
+    "tauri": "tauri"
   },
   "devDependencies": {
-    "electron": "42.2.0",
-    "electron-builder": "26.8.1",
-    "electron-rebuild": "3.2.9"
+    "@tauri-apps/cli": "^2"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@tauri-apps/plugin-global-shortcut": "^2.3.2"
   }
 }

@@ -1,48 +1,29 @@
-import { BrowserWindow, screen } from 'electron';
+export default class WindowCrosshair {
+    constructor() {
+        this.root = document.getElementById("crosshair-root");
+        this.crosshair = null;
+        this.styleTag = null;
+    }
 
-class WindowCrosshair {
-    constructor(height, width, page, x_offset = 0, y_offset = 0) {
-        this.width = width;
-        this.height = height;
-        this.x_offset = x_offset;
-        this.y_offset = y_offset;
-        this.page = page;
+    setMouseState(pressed) {
+        if (this.crosshair)
+            this.crosshair.classList.toggle('hidden', pressed);
+    }
 
-        this.window = new BrowserWindow({
-            width: this.width,
-            height: this.height,
+    setCrosshair(html, css) {
+        if (!this.root) return;
 
-            transparent: true,
-            frame: false,
-
-            alwaysOnTop: true,
-            skipTaskbar: false,
-
-            resizable: false,
-            focusable: false,
-            hasShadow: false,
-
-            webPreferences: {
-                nodeIntegration: true,
-                contextIsolation: false
+        if (css) {
+            if (!this.styleTag) {
+                this.styleTag = document.createElement("style");
+                document.head.appendChild(this.styleTag);
             }
-        });
 
-        this.init();
+            this.styleTag.textContent = css;
+        }
+
+        this.root.innerHTML = html;
+
+        this.crosshair = document.getElementById('crosshair');
     }
-
-    init = () => {
-        this.window.setIgnoreMouseEvents(true, {forward: true});
-        this.window.loadFile(this.page);
-
-        const { width, height } = screen.getPrimaryDisplay().bounds;
-        this.window.setPosition(
-            Math.floor((width - 40) / 2 + this.x_offset),
-            Math.floor((height - 40) / 2 + this.y_offset)
-        );
-    }
-
-    window = () => this.window;
 }
-
-export default WindowCrosshair;
