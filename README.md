@@ -1,6 +1,6 @@
 # Visual Crosshair V
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue?style=flat-square)
+![Version](https://img.shields.io/badge/version-0.2.1-blue?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078d4?style=flat-square&logo=windows)
 
 <table>
@@ -35,8 +35,6 @@ my_crosshair.zip
 
 ### 📄❗ Requirements for your HTML
 
----
-
 <table>
   <tr>
     <td width="50%" valign="top">
@@ -59,8 +57,6 @@ You can override the transition speed in your own `style.css`.
 
 ### 💡 How to load
 
----
-
 1. Pack your files into a `.zip`
 2. Open the app tray icon → **Load crosshair...**
 3. Select your `.zip`
@@ -74,7 +70,6 @@ You can override the transition speed in your own `style.css`.
 | [Rust](https://rustup.rs) | stable |
 
 ### Install & run
----
 
 ```bash
 git clone https://github.com/Vovursik/visual-crosshair-v
@@ -84,7 +79,6 @@ npm run tauri dev
 ```
 
 ### Build exe
----
 
 ```bash
 npm run tauri build
