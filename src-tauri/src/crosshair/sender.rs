@@ -10,3 +10,8 @@ pub fn send(app: &AppHandle, data: CrosshairData) {
 
     let _ = app.emit_to("main", "set-crosshair", payload);
 }
+
+/// Сообщает окну настроек, что список прицелов изменился (добавлен/удалён/применён).
+pub fn notify_list_changed(app: &AppHandle) {
+    let _ = app.emit("crosshairs-changed", ());
+}

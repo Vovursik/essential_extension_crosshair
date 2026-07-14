@@ -1,14 +1,15 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "visual-crosshair-v",
-  "version": "0.2.0",
-  "identifier": "com.vovasik.visual-crosshair",
+  "productName": "essential-extension-crosshair",
+  "version": "0.3.0",
+  "identifier": "com.vovasik.essential-extension-crosshair",
   "build": {
     "frontendDist": "../src"
   },
   "app": {
     "withGlobalTauri": true,
     "windows": [{
+        "label": "main",
         "title": "",
         "width": 200,
         "height": 200,

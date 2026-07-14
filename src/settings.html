@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Essential Extension Crosshair — Preferences</title>
+  <link rel="stylesheet" href="/settings.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="/assets/settings.png" alt="" class="brand-icon" />
+      <span class="brand-title">PREFERENCES</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-library">
+      <button id="load-btn" class="btn-load">
+       ADD NEW CROSSHAIR
+      </button>
+
+      <div class="library-label">PRESETS</div>
+
+      <div id="crosshair-list" class="crosshair-list">
+      </div>
+    </section>
+
+    <section class="panel panel-settings">
+      <div class="settings-label">ACTIVATION MODE</div>
+
+      <div class="mode-row" id="mode-press">
+        <img src="/assets/point.png" alt="reticle" class="reticle" data-mode="press" />
+        <div class="mode-text">
+          <span class="mode-name">PRESS</span>
+          <span class="mode-desc">Crosshair appears and dissapears after a series of presses</span>
+        </div>
+      </div>
+
+      <div id="press-count-show-sub" class="press-count-sub hidden">
+        <span class="tree-glyph">├──</span>
+        <label for="press-count-show" class="press-count-label">
+          BEFORE DISAPPEARING
+        </label>
+        <div class="stepper">
+          <button type="button" id="count-show-minus" class="stepper-btn">−</button>
+          <input type="text" inputmode="numeric" id="press-count-show" class="press-count-input" value="1" />
+          <button type="button" id="count-show-plus" class="stepper-btn">+</button>
+        </div>
+      </div>
+
+      <div id="press-count-hide-sub" class="press-count-sub hidden">
+        <span class="tree-glyph">└──</span>
+        <label for="press-count-hide" class="press-count-label">
+          BEFORE APPEARING
+        </label>
+        <div class="stepper">
+          <button type="button" id="count-hide-minus" class="stepper-btn">−</button>
+          <input type="text" inputmode="numeric" id="press-count-hide" class="press-count-input" value="1" />
+          <button type="button" id="count-hide-plus" class="stepper-btn">+</button>
+        </div>
+      </div>
+
+      <div class="mode-row" id="mode-hold">
+        <img src="/assets/point.png" alt="reticle" class="reticle" data-mode="hold" />
+        <div class="mode-text">
+          <span class="mode-name">HOLD</span>
+          <span class="mode-desc">Crosshair is hide while button is held</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/settings.js"></script>
+</body>
+</html>

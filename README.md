@@ -1,46 +1,43 @@
-# Visual Crosshair V
+# Essential Extension Crosshair
 
-![Version](https://img.shields.io/badge/version-0.2.0-blue?style=flat-square)
+![Version](https://img.shields.io/badge/version-0.3.0-blue?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078d4?style=flat-square&logo=windows)
 
-<table>
-  <tr>
-    <td width="150" align="center">
-      <img src="./icon.png" alt="Logo" width="100">
-    </td>
-    <td>
-      <strong>Visual Crosshair V</strong> is a tiny desktop app that draws a custom crosshair in the center of your screen — always on top, always transparent, never blocking your clicks.<br>
-      Useful for games that don't have a built-in crosshair, or any situation where you need a fixed center point on screen.
-    </td>
-  </tr>
-</table>
+<img src="./icon.png" alt="Logo" width="100">
 
-## 🦾 Features
+A tiny desktop app that draws a custom crosshair in the center of your screen — always on top, always transparent, never blocking your clicks. Useful for games that don't have a built-in crosshair, or any situation where you need a fixed center point on screen.
 
-- 🖥️ **Transparent overlay crosshair on top of all windows**
-- 🖱️ **Hides on Right Click — smooth fade out, instant reappear**
-- ⚙️ **System tray simple options**
+## Features
 
-## 🛠️ Creating your own crosshair
+- **Transparent overlay crosshair on top of all windows**
+- **Hides on Right Click — smooth fade out, instant reappear**
+- **User-friendly options panel**
+
+### Convenient crosshair preset system
+
+---
+
+Build a library of your favorite crosshairs — upload multiple presets and switch between them in one click.
+
+<img src="promo/load-crosshair.gif" width="450" />
+
+## Create your own crosshair
 
 You can load a completely custom crosshair by `.zip` file .
 
-### 📦 ZIP structure
+### ZIP structure
 
 ```
 my_crosshair.zip
-├── index.html   <- required, must have <div id="crosshair">
-└── style.css    <- optional, linked from index.html
+├── index.html
+└── style.css
 ```
-
-### 📄❗ Requirements for your HTML
-
----
+### Requirements for your HTML
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      Your <code>index.html</code> must contain an element with <code>id="crosshair"</code> — the app uses it to apply the hide/show animation on right click:
+      Your <code>index.html</code> must contain an element with <code>id="crosshair"</code> — the app uses it to apply the hide/show animation:
       <pre><code>&lt;div id="crosshair"&gt;
     &lt;!-- anything you want --&gt;
 &lt;/div&gt;</code></pre>
@@ -55,16 +52,11 @@ my_crosshair.zip
    </tr>
 </table>
 
-You can override the transition speed in your own `style.css`.
+## In Action
 
-### 💡 How to load
+Precision crosshairs, tested in real combat conditions.
 
----
-
-1. Pack your files into a `.zip`
-2. Open the app tray icon → **Load crosshair...**
-3. Select your `.zip`
-4. The crosshair updates and save instantly — no restart needed
+<img src="promo/game.gif" width="450" />
 
 ## Requirements
 
@@ -73,15 +65,11 @@ You can override the transition speed in your own `style.css`.
 | [Node.js](https://nodejs.org) | 18+ |
 | [Rust](https://rustup.rs) | stable |
 
-### Install & run
----
+## Getting Started
 
-```bash
-git clone https://github.com/Vovursik/visual-crosshair-v
-cd visual-crosshair-v
-npm install
-npm run tauri dev
-```
+1. Clone the repository
+1. `npm install`
+1. `npm run tauri dev`
 
 ### Build exe
 ---
@@ -90,4 +78,4 @@ npm run tauri dev
 npm run tauri build
 ```
 
-Output: `src-tauri/target/release/visual-crosshair-v.exe`
+Output: `src-tauri/target/release/essential-extension-crosshair.exe`
