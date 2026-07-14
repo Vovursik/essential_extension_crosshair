@@ -50,12 +50,6 @@ my_crosshair.zip
    </tr>
 </table>
 
-## In Action
-
-Precision crosshairs, tested in real combat conditions.
-
-<img src="promo/game.gif" width="450" />
-
 ## Requirements
 
 | Tool | Version |
