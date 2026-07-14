@@ -15,8 +15,6 @@ A tiny desktop app that draws a custom crosshair in the center of your screen â€
 
 ### Convenient crosshair preset system
 
----
-
 Build a library of your favorite crosshairs â€” upload multiple presets and switch between them in one click.
 
 <img src="promo/load-crosshair.gif" width="450" />
