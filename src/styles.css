@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+#crosshair-root {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Для точного центрирования */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Если внутри что-то есть */
+#crosshair-root * {
+    position: relative;
+    display: block;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

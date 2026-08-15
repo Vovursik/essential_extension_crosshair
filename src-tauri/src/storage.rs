@@ -1,0 +1,31 @@
+use std::fs;
+use dirs;
+
+pub fn save_path(path: &str) {
+    let config_dir = dirs::config_local_dir()
+        .unwrap()
+        .join("essential_extension_crosshair");
+    
+    std::fs::create_dir_all(&config_dir).ok();
+    
+    let config_file = config_dir.join("settings.json");
+    let settings = serde_json::json!({
+        "last_crosshair": path
+    });
+    
+    std::fs::write(config_file, serde_json::to_string_pretty(&settings).unwrap()).ok();
+}
+
+pub fn load_path() -> Option<String> {
+    let config_dir = dirs::config_local_dir()
+        .unwrap()
+        .join("essential_extension_crosshair");
+    
+    let config_file = config_dir.join("settings.json");
+    let contents = fs::read_to_string(config_file).ok()?;
+    let settings: serde_json::Value = serde_json::from_str(&contents).ok()?;
+    
+    settings.get("last_crosshair")?
+        .as_str()
+        .map(String::from)
+}
