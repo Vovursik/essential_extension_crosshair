@@ -1,4 +1,5 @@
 use tauri::{
+    Manager,
     tray::TrayIconBuilder,
     menu::{Menu, IconMenuItem},
     image::Image,
@@ -8,8 +9,19 @@ use tauri_plugin_dialog::DialogExt;
 use crate::crosshair;
 
 pub fn create_tray(app: &tauri::AppHandle) {
-    let load_icon = Image::from_path("icons/tray/load.png").unwrap();
-    let quit_icon = Image::from_path("icons/tray/quit.png").unwrap();
+    let icon_path = app.path()
+        .resolve("icons/32x32.png", tauri::path::BaseDirectory::Resource)
+        .unwrap();
+    let load_icon_path = app.path()
+        .resolve("icons/tray/load.png", tauri::path::BaseDirectory::Resource)
+        .unwrap();
+    let quit_icon_path = app.path()
+        .resolve("icons/tray/quit.png", tauri::path::BaseDirectory::Resource)
+        .unwrap();
+
+    let icon = Image::from_path(icon_path).unwrap();
+    let load_icon = Image::from_path(load_icon_path).unwrap();
+    let quit_icon = Image::from_path(quit_icon_path).unwrap();
 
     let load_item = IconMenuItem::with_id(
         app, "load", "Load", true, Some(load_icon), None::<&str>,
@@ -19,7 +31,6 @@ pub fn create_tray(app: &tauri::AppHandle) {
         app, "quit", "Quit", true, Some(quit_icon), None::<&str>,
     ).unwrap();
 
-    let icon = Image::from_path("icons/32x32.png").unwrap();
     let menu = Menu::with_items(app, &[&load_item, &quit_item]).unwrap();
 
     TrayIconBuilder::new()
